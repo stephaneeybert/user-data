@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "user-data",
+                "projectName": "user-data",
+                "workingDirectory": "/home/stephane/dev/java/projects/user-data",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "user-data",
+                "projectName": "user-data",
+                "workingDirectory": "/home/stephane/dev/java/projects/user-data",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
