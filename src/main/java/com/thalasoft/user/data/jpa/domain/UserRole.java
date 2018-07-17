@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 // import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@SequenceGenerator(name = "id_generator", sequenceName = "user_role_id_seq")
+@SequenceGenerator(name = "id_generator", sequenceName = "user_role_id_seq", allocationSize = 10)
 public class UserRole extends AbstractEntity {
 
     @ManyToOne

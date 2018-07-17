@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_account")
-@SequenceGenerator(name = "id_generator", sequenceName = "user_account_id_seq")
+@SequenceGenerator(name = "id_generator", sequenceName = "user_account_id_seq", allocationSize = 10)
 public class User extends AbstractEntity {
 
   @Column(nullable = false)
