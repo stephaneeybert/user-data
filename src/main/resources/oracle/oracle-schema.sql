@@ -12,7 +12,7 @@ create table user_account (
   constraint user_u1 unique (email),
   constraint user_pk primary key (id)
 );
-create sequence user_account_id_seq increment by 1 start with 1 nomaxvalue nocycle cache 10;
+create sequence user_account_id_seq increment by 10 start with 1 nomaxvalue nocycle cache 10;
 create or replace trigger tr_id_inc_user 
 before insert 
 on user_account
@@ -35,7 +35,7 @@ create table user_role (
   constraint user_role_u1 unique (user_account_id, role),
   constraint user_role_fk1 foreign key (user_account_id) references user_account (id)
 );
-create sequence user_role_id_seq increment by 1 start with 1 nomaxvalue nocycle cache 10;
+create sequence user_role_id_seq increment by 10 start with 1 nomaxvalue nocycle cache 10;
 create or replace trigger tr_id_inc_user_role 
 before insert 
 on user_role
