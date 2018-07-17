@@ -1,7 +1,7 @@
 set foreign_key_checks = 0;
 
 drop sequence if exists user_account_id_seq;
-create sequence user_account_id_seq;
+create sequence user_account_id_seq start with 1 increment by 10;
 drop table if exists user_account;
 create table user_account (
   -- id bigint(20) unsigned not null auto_increment,
@@ -20,7 +20,7 @@ create table user_account (
 );
 
 drop sequence if exists user_role_id_seq;
-create sequence user_role_id_seq;
+create sequence user_role_id_seq start with 1 increment by 10;
 drop table if exists user_role;
 create table user_role (
   -- id bigint(20) unsigned not null auto_increment,
