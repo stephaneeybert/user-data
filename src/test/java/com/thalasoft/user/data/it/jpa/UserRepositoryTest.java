@@ -4,6 +4,7 @@ import static com.thalasoft.user.data.assertion.UserAssert.assertThatUser;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -183,7 +184,12 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
 
   @Test
   public void testUpdateUserDoesNotUpdatePassword() {
-    // TODO
+		assertNotNull(user1.getId());
+		user1.setFirstname("Charlie");
+		user1 = userRepository.saveAndFlush(user1);
+		Optional<User> loadedUser = userRepository.findById(user1.getId());
+		assertNotNull(loadedUser.get().getId());
+		assertEquals(user1.getPassword(), loadedUser.get().getPassword());
   }
 
 }
