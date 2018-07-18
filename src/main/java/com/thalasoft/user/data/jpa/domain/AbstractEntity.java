@@ -7,22 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @MappedSuperclass
 public abstract class AbstractEntity {
 
   @Id
-  // Compatible with H2 (per table increment), MySQL (per table increment), Postgresql (global increment)
-  // If under MySQL prior to MariaDB 10.3 then there is no sequence.
-  // A work around is to configure a generator with the native strategy,
-  // as it makes use of the auto increment attribute of the column
-  // If under Postgresql then a global sequence named hibernate_sequence needs
-  // to be created
-  // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_native")
-  // @GenericGenerator(name = "id_native", strategy = "native")
-
-  // Compatible with H2, MySQL (per table increment), Postgresql (global increment)
+  // Compatible with H2, MySQL, Postgresql, Oracle
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
