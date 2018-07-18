@@ -18,16 +18,12 @@ import com.thalasoft.user.data.jpa.repository.UserRoleRepository;
 
 import org.junit.Before;
 import org.junit.Test;
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 public class UserRoleRepositoryTest extends AbstractRepositoryTest {
-
-	// private static Logger logger = LoggerFactory.getLogger(UserRoleRepositoryTest.class);
 
 	@Autowired
 	UserRepository userRepository;
