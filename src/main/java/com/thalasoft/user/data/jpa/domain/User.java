@@ -10,8 +10,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-// import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "user_account")
 @SequenceGenerator(name = "id_generator", sequenceName = "user_account_id_seq", allocationSize = 10)
@@ -33,7 +31,6 @@ public class User extends AbstractEntity {
   private String readablePassword;
   private String workPhone;
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
-  // @JsonManagedReference // TODO
   private Set<UserRole> userRoles = new HashSet<>();
 
   public User() {
