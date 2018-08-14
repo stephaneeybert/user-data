@@ -28,6 +28,10 @@ public class EmailAddress {
 		return candidate == null ? false : PATTERN.matcher(candidate).matches();
 	}
 
+	public String getEmailAddress() {
+		return value;
+	}
+
 	@Override
 	public String toString() {
 		return value;
