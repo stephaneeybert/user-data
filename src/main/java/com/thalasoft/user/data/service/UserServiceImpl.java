@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -107,6 +108,48 @@ public class UserServiceImpl implements UserService {
         userRoles.add(userRole);
       }
       existingUser.setUserRoles(userRoles);
+      existingUser.setEmail(new EmailAddress(modifiedUser.getEmail().getEmailAddress()));
+      existingUser.setPassword(modifiedUser.getPassword());
+      existingUser.setPasswordSalt(modifiedUser.getPasswordSalt());
+      existingUser.setReadablePassword(modifiedUser.getReadablePassword());
+      existingUser.setFirstname(modifiedUser.getFirstname());
+      existingUser.setLastname(modifiedUser.getLastname());
+      existingUser.setWorkPhone(modifiedUser.getWorkPhone());
+      // Save the returned id into the entity
+      existingUser = userRepository.saveAndFlush(existingUser);
+      return existingUser;
+    }
+  }
+
+  @Modifying
+  @Transactional
+  @Override
+  public User partialUpdate(Long existingUserId, User modifiedUser) {
+    User existingUser = findById(existingUserId);
+    if (existingUser == null) {
+      throw new EntityNotFoundException();
+    } else {
+      if (StringUtils.isNotEmpty(modifiedUser.getEmail().getEmailAddress())) {
+        existingUser.setEmail(new EmailAddress(modifiedUser.getEmail().getEmailAddress()));
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getPassword())) {
+        existingUser.setPassword(modifiedUser.getPassword());
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getPasswordSalt())) {
+        existingUser.setPasswordSalt(modifiedUser.getPasswordSalt());
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getReadablePassword())) {
+        existingUser.setReadablePassword(modifiedUser.getReadablePassword());
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getFirstname())) {
+        existingUser.setFirstname(modifiedUser.getFirstname());
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getLastname())) {
+        existingUser.setLastname(modifiedUser.getLastname());
+      }
+      if (StringUtils.isNotEmpty(modifiedUser.getWorkPhone())) {
+        existingUser.setWorkPhone(modifiedUser.getWorkPhone());
+      }
       // Save the returned id into the entity
       existingUser = userRepository.saveAndFlush(existingUser);
       return existingUser;

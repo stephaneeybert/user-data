@@ -14,6 +14,8 @@ public interface UserService {
 
   public User update(Long id, User user);
 
+  public User partialUpdate(Long id, User user);
+
   public User delete(Long id);
 
   public User addRole(User user, String role);
