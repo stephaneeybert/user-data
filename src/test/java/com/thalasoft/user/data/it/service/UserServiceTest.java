@@ -65,7 +65,6 @@ public class UserServiceTest extends AbstractServiceTest {
 	@After
 	public void afterAnyTest() {
 		userService.delete(user0.getId());
-		manyUsers = new ArrayList<User>();
 		for (User oneUser : manyUsers) {
 			userService.delete(oneUser.getId());
 		}

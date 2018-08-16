@@ -66,7 +66,7 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
     user3.setPasswordSalt("");
 
     manyUsers = new ArrayList<User>();
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < 39; i++) {
       String index = intToString(i, 3);
 
       User oneUser = new User();
@@ -153,7 +153,7 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
 
   @Test
   public void testFindAll() {
-    assertEquals(44, userRepository.count());
+    assertEquals(43, userRepository.count());
     Pageable pageRequest = PageRequest.of(0, 10, sort);
     Page<User> users = userRepository.all(pageRequest);
     assertEquals(10, users.getContent().size());
@@ -167,9 +167,8 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
     assertEquals("spirou037", users.getContent().get(19).getFirstname());
     pageRequest = PageRequest.of(2, 20, sort);
     users = userRepository.all(pageRequest);
-    assertEquals(4, users.getContent().size());
-    assertEquals("Stefan", users.getContent().get(2).getFirstname());
-    assertEquals("Stephane", users.getContent().get(3).getFirstname());
+    assertEquals(3, users.getContent().size());
+    assertEquals("Stephane", users.getContent().get(2).getFirstname());
   }
 
   @Test
@@ -186,14 +185,14 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
   public void testSearch() {
     Page<User> users = userRepository.search("spirou", PageRequest.of(0, 10, sort));
     assertEquals(10, users.getContent().size());
-    assertEquals(40, users.getTotalElements());
+    assertEquals(39, users.getTotalElements());
     assertEquals(4, users.getTotalPages());
     assertEquals("spirou000", users.getContent().get(0).getFirstname());
     assertEquals("spirou001", users.getContent().get(1).getFirstname());
     users = userRepository.search("spirou", PageRequest.of(1, 20, sort));
-    assertEquals(20, users.getContent().size());
+    assertEquals(19, users.getContent().size());
     assertEquals("spirou020", users.getContent().get(0).getFirstname());
-    assertEquals("spirou039", users.getContent().get(19).getFirstname());
+    assertEquals("spirou038", users.getContent().get(18).getFirstname());
   }
 
   @Test
