@@ -80,12 +80,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public User add(User user) {
     if (findByEmail(user.getEmail().toString()) == null) {
-      Set<UserRole> userRoles = new HashSet<UserRole>();
-      for (UserRole userRole : user.getUserRoles()) {
-        userRole.setUser(user);
-        userRoles.add(userRole);
-      }
-      user.setUserRoles(userRoles);
       // Save the returned id into the entity
       user = userRepository.saveAndFlush(user);
       return user;
@@ -102,12 +96,6 @@ public class UserServiceImpl implements UserService {
     if (existingUser == null) {
       throw new EntityNotFoundException();
     } else {
-      Set<UserRole> userRoles = new HashSet<UserRole>();
-      for (UserRole userRole : modifiedUser.getUserRoles()) {
-        userRole.setUser(existingUser);
-        userRoles.add(userRole);
-      }
-      existingUser.setUserRoles(userRoles);
       existingUser.setEmail(new EmailAddress(modifiedUser.getEmail().getEmailAddress()));
       existingUser.setPassword(modifiedUser.getPassword());
       existingUser.setPasswordSalt(modifiedUser.getPasswordSalt());
