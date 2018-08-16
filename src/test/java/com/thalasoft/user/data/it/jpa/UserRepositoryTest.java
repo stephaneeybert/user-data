@@ -106,9 +106,11 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
 
   @Test
   public void testSaveAndRetrieve() {
+    assertNotNull(user2.getId());
     Optional<User> loadedUser = userRepository.findById(user2.getId());
     assertThatUser(loadedUser.get()).hasAnIdNotNull().hasEmail(user2.getEmail()).hasPassword(user2.getPassword())
         .isSameAs(user2);
+    assertEquals(user2.getUserRoles().size(), loadedUser.get().getUserRoles().size());
   }
 
   @Test
