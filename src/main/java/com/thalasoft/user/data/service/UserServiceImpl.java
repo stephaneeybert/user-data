@@ -1,18 +1,14 @@
 package com.thalasoft.user.data.service;
 
+import java.util.Optional;
+
+import javax.annotation.Resource;
+
 import com.thalasoft.user.data.exception.EntityAlreadyExistsException;
 import com.thalasoft.user.data.exception.EntityNotFoundException;
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
-import com.thalasoft.user.data.jpa.domain.UserRole;
 import com.thalasoft.user.data.jpa.repository.UserRepository;
-import com.thalasoft.user.data.jpa.repository.UserRoleRepository;
-
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
@@ -26,9 +22,6 @@ public class UserServiceImpl implements UserService {
 
   @Resource
   private UserRepository userRepository;
-
-  @Resource
-  private UserRoleRepository userRoleRepository;
 
   @Override
   public Page<User> all(Pageable page) {
