@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -30,7 +31,7 @@ public class User extends AbstractEntity {
   @Column(length = 50)
   private String readablePassword;
   private String workPhone;
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "user")
   private Set<UserRole> userRoles = new HashSet<>();
 
   public User() {
