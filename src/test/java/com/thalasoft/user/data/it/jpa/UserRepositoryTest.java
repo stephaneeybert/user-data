@@ -14,6 +14,7 @@ import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
 import com.thalasoft.user.data.jpa.repository.UserRepository;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,17 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
     user3 = userRepository.saveAndFlush(user3);
     for (User oneUser : manyUsers) {
       oneUser = userRepository.saveAndFlush(oneUser);
+    }
+  }
+
+  @After
+  public void afterAnyTest() {
+    userRepository.delete(user0);
+    userRepository.delete(user1);
+    userRepository.delete(user2);
+    userRepository.delete(user3);
+    for (User oneUser : manyUsers) {
+      userRepository.delete(oneUser);
     }
   }
 

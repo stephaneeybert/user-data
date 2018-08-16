@@ -11,6 +11,7 @@ import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
 import com.thalasoft.user.data.service.UserService;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,15 @@ public class UserServiceTest extends AbstractServiceTest {
 			oneUser.setPasswordSalt("");
 			userService.add(oneUser);
 			manyUsers.add(oneUser);
+		}
+	}
+
+	@After
+	public void afterAnyTest() {
+		userService.delete(user0.getId());
+		manyUsers = new ArrayList<User>();
+		for (User oneUser : manyUsers) {
+			userService.delete(oneUser.getId());
 		}
 	}
 
