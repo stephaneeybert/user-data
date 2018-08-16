@@ -198,12 +198,12 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
 
   @Test
   public void testUpdateUserDoesNotUpdatePassword() {
-		assertNotNull(user1.getId());
-		user1.setFirstname("Charlie");
-		user1 = userRepository.saveAndFlush(user1);
-		Optional<User> loadedUser = userRepository.findById(user1.getId());
-		assertNotNull(loadedUser.get().getId());
-		assertEquals(user1.getPassword(), loadedUser.get().getPassword());
+    assertNotNull(user1.getId());
+    user1.setFirstname("Charlie");
+    user1 = userRepository.saveAndFlush(user1);
+    Optional<User> loadedUser = userRepository.findById(user1.getId());
+    assertNotNull(loadedUser.get().getId());
+    assertEquals(user1.getPassword(), loadedUser.get().getPassword());
   }
 
 }
