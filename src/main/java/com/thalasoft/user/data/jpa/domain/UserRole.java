@@ -23,7 +23,7 @@ public class UserRole extends AbstractEntity {
         return this.user;
     }
 
-    public void setUser(User user) {
+    void setUser(User user) {
         this.user = user;
     }
 
@@ -31,7 +31,7 @@ public class UserRole extends AbstractEntity {
         return this.role;
     }
 
-    public void setRole(String role) {
+    void setRole(String role) {
         this.role = role;
     }
 
