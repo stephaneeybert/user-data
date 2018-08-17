@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.thalasoft.user.data.it.BaseTest;
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
 import com.thalasoft.user.data.jpa.repository.UserRepository;
@@ -23,7 +24,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-public class UserRepositoryTest extends AbstractRepositoryTest {
+public class UserRepositoryTest extends BaseTest {
 
   @Autowired
   UserRepository userRepository;

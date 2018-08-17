@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thalasoft.user.data.it.BaseTest;
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
 import com.thalasoft.user.data.service.UserService;
@@ -20,7 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-public class UserServiceTest extends AbstractServiceTest {
+public class UserServiceTest extends BaseTest {
 
 	@Autowired
 	private UserService userService;
