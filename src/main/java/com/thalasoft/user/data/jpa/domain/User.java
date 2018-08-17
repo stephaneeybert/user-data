@@ -105,13 +105,6 @@ public class User extends AbstractEntity {
     return userRoles;
   }
 
-  public void setUserRoles(Set<UserRole> userRoles) {
-    this.userRoles.clear();
-    if (userRoles != null) {
-      this.userRoles.addAll(userRoles);
-    }
-  }
-
   public void addRole(String role) {
     boolean present = false;
     for (UserRole userRole : this.userRoles) {
