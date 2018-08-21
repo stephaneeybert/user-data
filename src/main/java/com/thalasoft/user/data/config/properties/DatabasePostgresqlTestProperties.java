@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @PropertySource({ "classpath:postgresql/data-source-test.properties", "classpath:postgresql/flyway.properties" })
 public class DatabasePostgresqlTestProperties extends AbstractDatabaseProperties {
 
-  private static Logger logger = LoggerFactory.getLogger(DatabaseH2TestProperties.class);
+    private static Logger logger = LoggerFactory.getLogger(DatabaseH2TestProperties.class);
 
-  public DatabasePostgresqlTestProperties() {
-    logger.debug("Loading the Postgresql Test properties file");
-  }
+    public DatabasePostgresqlTestProperties() {
+        logger.debug("Loading the Postgresql Test properties file");
+    }
 
 }

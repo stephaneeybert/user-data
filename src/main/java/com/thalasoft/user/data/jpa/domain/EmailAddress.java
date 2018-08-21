@@ -43,8 +43,7 @@ public class EmailAddress {
 			return true;
 		}
 
-		if (this.value == null || obj == null
-				|| !(this.getClass().equals(obj.getClass()))) {
+		if (this.value == null || obj == null || !(this.getClass().equals(obj.getClass()))) {
 			return false;
 		}
 

@@ -12,28 +12,28 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCustom {
 
-  public User findByEmail(EmailAddress email);
+    public User findByEmail(EmailAddress email);
 
-  public User findByEmailAndPassword(EmailAddress email, String password);
+    public User findByEmailAndPassword(EmailAddress email, String password);
 
-  public User findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
+    public User findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
 
-  @Query("SELECT u FROM User u ORDER BY u.firstname")
-  public Page<User> all(Pageable page);
+    @Query("SELECT u FROM User u ORDER BY u.firstname")
+    public Page<User> all(Pageable page);
 
-  public Page<User> findByConfirmedEmailIsTrue(Pageable page);
+    public Page<User> findByConfirmedEmailIsTrue(Pageable page);
 
-  public Page<User> findByConfirmedEmailIsFalse(Pageable page);
+    public Page<User> findByConfirmedEmailIsFalse(Pageable page);
 
-  @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT(:searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT(:searchTerm, '%')) ORDER BY u.firstname")
-  public Page<User> searchOnName(@Param("searchTerm") String searchTerm, Pageable page);
+    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT(:searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT(:searchTerm, '%')) ORDER BY u.firstname")
+    public Page<User> searchOnName(@Param("searchTerm") String searchTerm, Pageable page);
 
-  @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) ORDER BY u.firstname")
-  public Page<User> search(@Param("searchTerm") String searchTerm, Pageable page);
+    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) ORDER BY u.firstname")
+    public Page<User> search(@Param("searchTerm") String searchTerm, Pageable page);
 
-  @Modifying
-  @Query("UPDATE User SET password = :password, passwordSalt = :passwordSalt, readablePassword = :readablePassword WHERE id = :id")
-  public void updatePassword(@Param("password") String password, @Param("passwordSalt") String passwordSalt,
-      @Param("readablePassword") String readablePassword, @Param("id") Long id);
+    @Modifying
+    @Query("UPDATE User SET password = :password, passwordSalt = :passwordSalt, readablePassword = :readablePassword WHERE id = :id")
+    public void updatePassword(@Param("password") String password, @Param("passwordSalt") String passwordSalt,
+            @Param("readablePassword") String readablePassword, @Param("id") Long id);
 
 }

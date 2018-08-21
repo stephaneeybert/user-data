@@ -8,9 +8,9 @@ import com.thalasoft.user.data.service.UserServiceImpl;
 @Configuration
 public class JpaService {
 
-  @Bean
-  public UserServiceImpl userService() {
-    return new UserServiceImpl();
-  }
+    @Bean
+    public UserServiceImpl userService() {
+        return new UserServiceImpl();
+    }
 
 }

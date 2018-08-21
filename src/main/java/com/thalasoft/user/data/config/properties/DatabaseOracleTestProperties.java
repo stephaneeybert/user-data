@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @PropertySource({ "classpath:oracle/data-source-test.properties", "classpath:oracle/flyway.properties" })
 public class DatabaseOracleTestProperties extends AbstractDatabaseProperties {
 
-  private static Logger logger = LoggerFactory.getLogger(DatabaseOracleTestProperties.class);
+    private static Logger logger = LoggerFactory.getLogger(DatabaseOracleTestProperties.class);
 
-  public DatabaseOracleTestProperties() {
-    logger.debug("Loading the Oracle Test properties file");
-  }
+    public DatabaseOracleTestProperties() {
+        logger.debug("Loading the Oracle Test properties file");
+    }
 
 }

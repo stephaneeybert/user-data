@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @PropertySource({ "classpath:h2/data-source-test.properties", "classpath:h2/flyway.properties" })
 public class DatabaseH2TestProperties extends AbstractDatabaseProperties {
 
-  private static Logger logger = LoggerFactory.getLogger(DatabaseH2TestProperties.class);
+    private static Logger logger = LoggerFactory.getLogger(DatabaseH2TestProperties.class);
 
-  public DatabaseH2TestProperties() {
-    logger.debug("Loading the H2 Test properties file");
-  }
+    public DatabaseH2TestProperties() {
+        logger.debug("Loading the H2 Test properties file");
+    }
 
 }

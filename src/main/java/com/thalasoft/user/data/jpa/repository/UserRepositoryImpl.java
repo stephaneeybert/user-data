@@ -24,5 +24,5 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 		}
 		return entity.get();
 	}
-	
+
 }
