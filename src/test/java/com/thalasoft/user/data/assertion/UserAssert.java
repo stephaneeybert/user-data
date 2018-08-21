@@ -47,6 +47,18 @@ public class UserAssert extends AbstractAssert<UserAssert, User> {
 		return this;
 	}
 
+	public UserAssert hasFirstname(String firstname) {
+		assertThat(actual.getFirstname()).overridingErrorMessage("Expected the firstname to be <%s> but was <%s>.",
+				firstname, actual.getFirstname()).isEqualTo(firstname);
+		return this;
+	}
+
+	public UserAssert hasLastname(String lastname) {
+		assertThat(actual.getLastname()).overridingErrorMessage("Expected the lastname to be <%s> but was <%s>.",
+				lastname, actual.getLastname()).isEqualTo(lastname);
+		return this;
+	}
+
 	public UserAssert hasRole(String role) {
 		isNotNull();
 		boolean present = false;

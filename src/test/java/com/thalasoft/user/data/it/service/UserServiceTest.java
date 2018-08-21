@@ -3,6 +3,7 @@ package com.thalasoft.user.data.it.service;
 import static com.thalasoft.user.data.assertion.UserAssert.assertThatUser;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,21 @@ public class UserServiceTest extends BaseTest {
 	public void testUpdate() {
 		String firstname = "Marcus";
 		user0.setFirstname(firstname);
+		user0.setLastname("");
 		user0 = userService.update(user0.getId(), user0);
+		assertThatUser(user0).hasFirstname(firstname);
+		assertThatUser(user0).hasLastname("");
+	}
+
+	@Test
+	public void testPartialUpdate() {
+		String firstname = "Marcus";
+		user0.setFirstname(firstname);
+		String originalLastname = user0.getLastname();
+		user0.setLastname("");
+		user0 = userService.partialUpdate(user0.getId(), user0);
+		assertThatUser(user0).hasFirstname(firstname);
+		assertThatUser(user0).hasLastname(originalLastname);
 	}
 
 	@Test
