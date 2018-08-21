@@ -28,6 +28,8 @@ public interface UserService {
 
     public User findByEmailAndPassword(EmailAddress email, String password);
 
+    public User findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
+
     public User findByEmail(String email);
 
     public Page<User> findByConfirmedEmailIsTrue(Pageable page);

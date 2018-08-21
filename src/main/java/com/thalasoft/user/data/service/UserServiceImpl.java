@@ -40,12 +40,32 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail(new EmailAddress(email));
+        Optional<User> user = userRepository.findByEmail(new EmailAddress(email));
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 
     @Override
     public User findByEmailAndPassword(EmailAddress email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
+        Optional<User> user = userRepository.findByEmailAndPassword(email, password);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new EntityNotFoundException();
+        }
+    }
+
+    @Override
+    public User findByEmailAndReadablePassword(EmailAddress email, String readablePassword) {
+        Optional<User> user = userRepository.findByEmailAndReadablePassword(email, readablePassword);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 
     @Override
@@ -72,12 +92,13 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User add(User user) {
-        if (findByEmail(user.getEmail().toString()) == null) {
+        try  {
+            findByEmail(user.getEmail().toString());
+            throw new EntityAlreadyExistsException();
+        } catch (EntityNotFoundException e) {
             // Save the returned id into the entity
             user = userRepository.saveAndFlush(user);
             return user;
-        } else {
-            throw new EntityAlreadyExistsException();
         }
     }
 

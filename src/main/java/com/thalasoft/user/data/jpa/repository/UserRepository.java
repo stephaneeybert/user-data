@@ -1,5 +1,7 @@
 package com.thalasoft.user.data.jpa.repository;
 
+import java.util.Optional;
+
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
 
@@ -12,11 +14,11 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCustom {
 
-    public User findByEmail(EmailAddress email);
+    public Optional<User> findByEmail(EmailAddress email);
 
-    public User findByEmailAndPassword(EmailAddress email, String password);
+    public Optional<User> findByEmailAndPassword(EmailAddress email, String password);
 
-    public User findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
+    public Optional<User> findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
 
     @Query("SELECT u FROM User u ORDER BY u.firstname")
     public Page<User> all(Pageable page);

@@ -134,14 +134,14 @@ public class UserRepositoryTest extends BaseTest {
 
     @Test
     public void testFindByEmail() {
-        User loadedUser = userRepository.findByEmail(user0.getEmail());
-        assertThatUser(loadedUser).hasEmail(user0.getEmail());
+        Optional<User> loadedUser = userRepository.findByEmail(user0.getEmail());
+        assertThatUser(loadedUser.get()).hasEmail(user0.getEmail());
     }
 
     @Test
     public void testFindByEmailAndPassword() {
-        User loadedUser = userRepository.findByEmailAndPassword(user0.getEmail(), "toto");
-        assertThatUser(loadedUser).hasEmail(user0.getEmail());
+        Optional<User> loadedUser = userRepository.findByEmailAndPassword(user0.getEmail(), "toto");
+        assertThatUser(loadedUser.get()).hasEmail(user0.getEmail());
     }
 
     @Test
