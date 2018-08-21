@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     if (user.isPresent()) {
       return user.get();
     } else {
-      return null;
+      throw new EntityNotFoundException();
     }
   }
 
