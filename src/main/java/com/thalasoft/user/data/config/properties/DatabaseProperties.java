@@ -12,8 +12,6 @@ public interface DatabaseProperties {
     
     public String getDataSourcePassword();
     
-    public String isShowSql();
-
     public String getDdlAuto();
 
 }

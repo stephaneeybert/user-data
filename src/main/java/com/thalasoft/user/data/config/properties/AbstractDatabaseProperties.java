@@ -14,8 +14,6 @@ public abstract class AbstractDatabaseProperties implements DatabaseProperties {
     private String dataSourceUsername;
     @Value("${" + PropertyNames.CONFIG_DATA_SOURCE_PASSWORD + "}")
     private String dataSourcePassword;
-    @Value("${" + PropertyNames.CONFIG_DATA_SOURCE_SHOW_SQL + "}")
-    private String showSql;
     @Value("${" + PropertyNames.CONFIG_DATA_SOURCE_DDL_AUTO + "}")
     private String ddlAuto;
 
@@ -37,10 +35,6 @@ public abstract class AbstractDatabaseProperties implements DatabaseProperties {
 
     public String getDataSourcePassword() {
         return dataSourcePassword;
-    }
-
-    public String isShowSql() {
-        return showSql;
     }
 
     public String getDdlAuto() {
