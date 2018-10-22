@@ -6,6 +6,7 @@ import com.thalasoft.user.data.jpa.domain.User;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -43,4 +44,6 @@ public interface UserService {
 
     public void clearReadablePassword(User user) throws EntityNotFoundException;
 
+    public void addSortToPageable(Pageable page, Sort sort);
+    
 }

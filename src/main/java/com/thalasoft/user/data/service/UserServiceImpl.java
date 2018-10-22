@@ -13,6 +13,7 @@ import com.thalasoft.user.data.jpa.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -207,6 +208,11 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new EntityNotFoundException();
         }
+    }
+
+    @Override
+    public void addSortToPageable(Pageable page, Sort sort) {
+        page.getSort().and(sort);
     }
 
 }
