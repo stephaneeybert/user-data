@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
 
     public Optional<User> findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
 
-    @Query("SELECT u FROM User u ORDER BY u.firstname")
+    @Query("SELECT u FROM User u")
     public Page<User> all(Pageable page);
 
     public Page<User> findByConfirmedEmailIsTrue(Pageable page);
