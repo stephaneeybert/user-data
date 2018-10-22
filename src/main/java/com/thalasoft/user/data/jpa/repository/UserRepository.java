@@ -27,10 +27,10 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
 
     public Page<User> findByConfirmedEmailIsFalse(Pageable page);
 
-    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT(:searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT(:searchTerm, '%')) ORDER BY u.firstname")
+    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT(:searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT(:searchTerm, '%'))")
     public Page<User> searchOnName(@Param("searchTerm") String searchTerm, Pageable page);
 
-    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) ORDER BY u.firstname")
+    @Query("SELECT u FROM User u WHERE LOWER(u.firstname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.lastname) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(u.email) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     public Page<User> search(@Param("searchTerm") String searchTerm, Pageable page);
 
     @Modifying

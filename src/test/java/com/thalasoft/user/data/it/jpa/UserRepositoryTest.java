@@ -80,7 +80,7 @@ public class UserRepositoryTest extends BaseTest {
             manyUsers.add(oneUser);
         }
 
-        sort = Sort.by(Sort.Order.asc("lastname"), Sort.Order.asc("firstname"));
+        sort = Sort.by(Sort.Order.asc("email"), Sort.Order.asc("firstname"));
     }
 
     @Before
@@ -160,16 +160,18 @@ public class UserRepositoryTest extends BaseTest {
         assertEquals(10, users.getContent().size());
         assertEquals("Cyril", users.getContent().get(0).getFirstname());
         assertEquals("Marc", users.getContent().get(1).getFirstname());
-        assertEquals("spirou000", users.getContent().get(2).getFirstname());
+        assertEquals("Stefan", users.getContent().get(2).getFirstname());
+        assertEquals("Stephane", users.getContent().get(3).getFirstname());
+        assertEquals("spirou000", users.getContent().get(4).getFirstname());
         pageRequest = PageRequest.of(1, 20, sort);
         users = userRepository.all(pageRequest);
         assertEquals(20, users.getContent().size());
-        assertEquals("spirou018", users.getContent().get(0).getFirstname());
-        assertEquals("spirou037", users.getContent().get(19).getFirstname());
+        assertEquals("spirou016", users.getContent().get(0).getFirstname());
+        assertEquals("spirou035", users.getContent().get(19).getFirstname());
         pageRequest = PageRequest.of(2, 20, sort);
         users = userRepository.all(pageRequest);
         assertEquals(3, users.getContent().size());
-        assertEquals("Stephane", users.getContent().get(2).getFirstname());
+        assertEquals("spirou038", users.getContent().get(2).getFirstname());
     }
 
     @Test
