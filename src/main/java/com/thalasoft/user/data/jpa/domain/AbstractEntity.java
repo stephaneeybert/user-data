@@ -1,11 +1,16 @@
 package com.thalasoft.user.data.jpa.domain;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
@@ -35,6 +40,12 @@ public abstract class AbstractEntity {
     public void setVersion(Long version) {
         this.version = version;
     }
+
+    @CreationTimestamp
+    protected LocalDateTime createdOn;
+
+    @UpdateTimestamp
+    protected LocalDateTime updatedOn;
 
     @Override
     public boolean equals(Object object) {
