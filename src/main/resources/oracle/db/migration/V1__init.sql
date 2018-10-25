@@ -1,6 +1,8 @@
 create table user_account (
   id number(10) not null,
   version number(10) not null,
+  created_on date,
+  updated_on date,
   firstname varchar2(255) not null,
   lastname varchar2(255) not null,
   password varchar2(100),
@@ -29,6 +31,8 @@ end;
 create table user_role (
   id number(10) not null,
   version number(10) not null,
+  created_on date,
+  updated_on date,
   user_account_id number(10) not null,
   role varchar2(50) not null,
   constraint user_role_pk primary key (id),
