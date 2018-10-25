@@ -23,7 +23,7 @@ public abstract class AbstractEntity {
 
     @Version
     @Column(nullable = false)
-    private Long version;
+    private Integer version;
 
     @CreationTimestamp
     protected LocalDateTime createdOn;
@@ -39,11 +39,11 @@ public abstract class AbstractEntity {
         this.id = id;
     }
 
-    public Long getVersion() {
+    public Integer getVersion() {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
