@@ -26,13 +26,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> all(Pageable page) {
-        return userRepository.all(page);
+        Page<User> users = userRepository.all(page);
+        if (users.getNumberOfElements() > 0) {
+          return users;
+        } else {
+          throw new EntityNotFoundException();
+        }
     }
 
     @Override
     public Page<User> search(String searchTerm, Pageable page) {
-        return userRepository.search(searchTerm, page);
-    }
+      Page<User> users = userRepository.search(searchTerm, page);
+      if (users.getNumberOfElements() > 0) {
+        return users;
+      } else {
+        throw new EntityNotFoundException();
+      }
+  }
 
     @Override
     public Page<User> searchOnName(String searchTerm, Pageable page) {
