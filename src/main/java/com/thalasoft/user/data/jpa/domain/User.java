@@ -121,7 +121,7 @@ public class User extends AbstractEntity {
     }
 
     public void removeRole(String role) {
-        // Deleting within a loop triigers a concurrent exception
+        // Deleting within a loop triggers a concurrent exception
         UserRole userRoleToRemove = null;
         for (UserRole userRole : this.userRoles) {
             if (userRole.getRole().equals(role)) {
