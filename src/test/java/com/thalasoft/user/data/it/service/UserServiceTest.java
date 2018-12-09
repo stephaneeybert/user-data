@@ -89,11 +89,6 @@ public class UserServiceTest extends BaseTest {
 
 		user = userService.add(user);
 		assertNotNull(user.getId());
-		assertEquals(user.getFirstname(), user.getFirstname());
-		assertEquals(user.getLastname(), user.getLastname());
-		assertEquals(user.getEmail(), user.getEmail());
-		assertEquals(user.getPassword(), user.getPassword());
-		assertEquals(user.getPasswordSalt(), user.getPasswordSalt());
 	}
 
 	@Test
