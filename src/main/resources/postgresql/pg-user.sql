@@ -1,4 +1,5 @@
 create user useraccount with encrypted password 'mypassword';
+alter user useraccount with superuser;
 
 revoke connect on database useraccount from public;
 grant connect on database useraccount to useraccount;
