@@ -11,6 +11,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "user_account")
 @SequenceGenerator(name = "id_generator", sequenceName = "user_account_id_seq", allocationSize = 10)
@@ -33,77 +44,6 @@ public class User extends AbstractEntity {
     private String workPhone;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "user")
     private Set<UserRole> userRoles = new HashSet<>();
-
-    public User() {
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public EmailAddress getEmail() {
-        return email;
-    }
-
-    public void setEmail(EmailAddress email) {
-        this.email = email;
-    }
-
-    public boolean isConfirmedEmail() {
-        return confirmedEmail;
-    }
-
-    public void setConfirmedEmail(boolean confirmedEmail) {
-        this.confirmedEmail = confirmedEmail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordSalt() {
-        return passwordSalt;
-    }
-
-    public void setPasswordSalt(String passwordSalt) {
-        this.passwordSalt = passwordSalt;
-    }
-
-    public String getReadablePassword() {
-        return readablePassword;
-    }
-
-    public void setReadablePassword(String readablePassword) {
-        this.readablePassword = readablePassword;
-    }
-
-    public String getWorkPhone() {
-        return workPhone;
-    }
-
-    public void setWorkPhone(String workPhone) {
-        this.workPhone = workPhone;
-    }
-
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
-    }
 
     public void addRole(String role) {
         boolean present = false;

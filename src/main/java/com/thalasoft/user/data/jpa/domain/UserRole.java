@@ -6,6 +6,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @SequenceGenerator(name = "id_generator", sequenceName = "user_role_id_seq", allocationSize = 10)
 public class UserRole extends AbstractEntity {
@@ -15,24 +26,5 @@ public class UserRole extends AbstractEntity {
     private User user;
     @Column(nullable = false)
     private String role;
-
-    public UserRole() {
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getRole() {
-        return this.role;
-    }
-
-    void setRole(String role) {
-        this.role = role;
-    }
 
 }
