@@ -2,6 +2,7 @@ set session_replication_role = replica;
 
 drop sequence if exists hibernate_sequence;
 create sequence hibernate_sequence start with 1 increment by 10;
+
 drop sequence if exists user_account_id_seq;
 create sequence user_account_id_seq start with 1 increment by 10;
 drop table if exists user_account;
