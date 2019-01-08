@@ -37,7 +37,7 @@ public class User extends AbstractEntity {
     private boolean confirmedEmail;
     @Column(length = 100)
     private String password;
-    @Column(length = 50)
+    @Column(length = 100)
     private String passwordSalt;
     @Column(length = 50)
     private String readablePassword;
