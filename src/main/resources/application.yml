@@ -10,7 +10,8 @@ logging:
   level:
     org:
       hibernate:
-        SQL: DEBUG
+        SQL: debug
         type:
           descriptor:
             sql: trace
+  file: logs/user-data.log
