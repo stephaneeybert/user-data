@@ -1,6 +1,10 @@
 package com.thalasoft.user.data.service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.annotation.Resource;
 
@@ -24,25 +28,35 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserRepository userRepository;
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<User> streamAll(Pageable page) {
+        List<User> mapstream = Collections.emptyList();
+        try (Stream<User> stream = userRepository.streamAll(page)) {
+            mapstream = stream.collect(Collectors.toList());
+        }
+        return mapstream;
+    }
+
     @Override
     public Page<User> all(Pageable page) {
         Page<User> users = userRepository.all(page);
         if (users.getNumberOfElements() > 0) {
-          return users;
+            return users;
         } else {
-          throw new EntityNotFoundException();
+            throw new EntityNotFoundException();
         }
     }
 
     @Override
     public Page<User> search(String searchTerm, Pageable page) {
-      Page<User> users = userRepository.search(searchTerm, page);
-      if (users.getNumberOfElements() > 0) {
-        return users;
-      } else {
-        throw new EntityNotFoundException();
-      }
-  }
+        Page<User> users = userRepository.search(searchTerm, page);
+        if (users.getNumberOfElements() > 0) {
+            return users;
+        } else {
+            throw new EntityNotFoundException();
+        }
+    }
 
     @Override
     public Page<User> searchOnName(String searchTerm, Pageable page) {
@@ -103,7 +117,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User add(User user) {
-        try  {
+        try {
             findByEmail(user.getEmail().toString());
             throw new EntityAlreadyExistsException();
         } catch (EntityNotFoundException e) {

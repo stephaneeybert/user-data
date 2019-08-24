@@ -1,5 +1,7 @@
 package com.thalasoft.user.data.service;
 
+import java.util.List;
+
 import com.thalasoft.user.data.exception.EntityNotFoundException;
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
@@ -25,6 +27,8 @@ public interface UserService {
     public User removeRole(User user, String role) throws EntityNotFoundException;
 
     public User findById(Long id) throws EntityNotFoundException;
+
+    public List<User> streamAll(Pageable page);
 
     public Page<User> all(Pageable page);
 

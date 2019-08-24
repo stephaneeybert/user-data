@@ -1,6 +1,7 @@
 package com.thalasoft.user.data.jpa.repository;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import com.thalasoft.user.data.jpa.domain.EmailAddress;
 import com.thalasoft.user.data.jpa.domain.User;
@@ -19,6 +20,9 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
     public Optional<User> findByEmailAndPassword(EmailAddress email, String password);
 
     public Optional<User> findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
+
+    @Query("SELECT u FROM User u")
+    public Stream<User> streamAll(Pageable page);
 
     @Query("SELECT u FROM User u")
     public Page<User> all(Pageable page);
