@@ -30,9 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> streamAll(Pageable page) {
+    public List<User> streamAll() {
         List<User> mapstream = Collections.emptyList();
-        try (Stream<User> stream = userRepository.streamAll(page)) {
+        try (Stream<User> stream = userRepository.streamAll()) {
             mapstream = stream.collect(Collectors.toList());
         }
         return mapstream;

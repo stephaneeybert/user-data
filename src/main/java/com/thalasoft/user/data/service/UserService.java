@@ -28,7 +28,7 @@ public interface UserService {
 
     public User findById(Long id) throws EntityNotFoundException;
 
-    public List<User> streamAll(Pageable page);
+    public List<User> streamAll();
 
     public Page<User> all(Pageable page);
 
