@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
     public Optional<User> findByEmailAndReadablePassword(EmailAddress email, String readablePassword);
 
     @Query("SELECT u FROM User u")
-    public Stream<User> streamAll();
+    public Stream<User> streamAll(Pageable page);
 
     @Query("SELECT u FROM User u")
     public Page<User> all(Pageable page);
