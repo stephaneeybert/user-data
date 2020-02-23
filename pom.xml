@@ -21,7 +21,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>12</java.version>
+    <java.version>13</java.version>
   </properties>
 
   <dependencies>
@@ -93,7 +93,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M4</version>
         <configuration>
-          <useSystemClassLoader>false</useSystemClassLoader>
           <argLine>${surefireArgLine}</argLine>
           <includes>
             <include>**/ut/**</include>
