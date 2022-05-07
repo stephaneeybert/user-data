@@ -93,6 +93,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M4</version>
         <configuration>
+          <forkedProcessExitTimeoutInSeconds>120</forkedProcessExitTimeoutInSeconds>
           <argLine>${surefireArgLine}</argLine>
           <includes>
             <include>**/ut/**</include>
@@ -104,6 +105,8 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M4</version>
         <configuration>
+          <debugForkedProcess>true</debugForkedProcess>
+          <forkedProcessExitTimeoutInSeconds>120</forkedProcessExitTimeoutInSeconds>
           <argLine>${failsafeArgLine}</argLine>
           <includes>
             <include>**/it/**</include>
@@ -113,6 +116,7 @@
           <execution>
             <goals>
               <goal>integration-test</goal>
+              <goal>verify</goal>
             </goals>
           </execution>
         </executions>
